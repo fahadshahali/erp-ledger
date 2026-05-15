@@ -1,0 +1,23 @@
+{
+  "overview": "A full-stack ERP Customer Ledger Dashboard for managing customers, sales invoices, receipts, and calculating account balances. Features a dashboard with KPI cards, customer master management, sales entry with invoice printing, receipt entry with payment modes, and individual customer ledger views with monthly breakdowns.",
+  "features": [
+    "Dashboard with KPI cards (Total Customers, Sales, Receipts, Outstanding)",
+    "Customer Master with auto-generated codes and full profile management",
+    "Sales Entry with add/edit and printable invoices",
+    "Receipt Entry with payment modes (Bank, Cash, Check, Online) and printable receipts",
+    "Individual customer ledger with month-by-month balance breakdown",
+    "Closing balance auto-calculated (Opening Balance + Total Sale - Total Receipts)",
+    "Pre-populated sample data with Indian Rupee formatting"
+  ],
+  "category": "productivity",
+  "tags": [
+    "erp",
+    "ledger",
+    "accounting",
+    "crm",
+    "invoicing",
+    "receipts",
+    "dashboard"
+  ],
+  "last_updated": "2026-05-15T08:46:39.236Z"
+}

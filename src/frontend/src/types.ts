@@ -1,0 +1,20 @@
+// Re-export backend types for frontend use
+export type {
+  Customer,
+  Sale,
+  Receipt,
+  CustomerSummary,
+  MonthlyLedgerEntry,
+  CustomerLedger,
+  DashboardStats,
+  AddCustomerRequest,
+  UpdateCustomerRequest,
+  AddSaleRequest,
+  UpdateSaleRequest,
+  AddReceiptRequest,
+  UpdateReceiptRequest,
+  CustomerId,
+  SaleId,
+  ReceiptId,
+  Timestamp,
+} from "./backend.d";

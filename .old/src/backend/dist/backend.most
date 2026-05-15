@@ -1,0 +1,75 @@
+// Version: 1.0.0
+type CustomerId__1015005394 = Text;
+type CustomerId__472044180 = CustomerId__1015005394;
+type CustomerId__548046926 = CustomerId__1015005394;
+type CustomerId__771418562 = CustomerId__1015005394;
+type Customer__192853522 =
+  {
+    address : Text;
+    companyName : Text;
+    createdAt : Timestamp__980057786;
+    customerCode : Text;
+    customerName : Text;
+    gstNumber : Text;
+    id : CustomerId__548046926;
+    mobile : Text;
+    openingBalance : Nat
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type ReceiptId__335183513 = ReceiptId__956149208;
+type ReceiptId__956149208 = Text;
+type Receipt__761090025 =
+  {
+    amount : Nat;
+    createdAt : Timestamp__839643229;
+    customerId : CustomerId__472044180;
+    customerName : Text;
+    date : Text;
+    id : ReceiptId__335183513;
+    paymentMode : Text;
+    receiptNo : Text
+  };
+type SaleId__652775874 = SaleId__807252808;
+type SaleId__807252808 = Text;
+type Sale__289909216 =
+  {
+    amount : Nat;
+    createdAt : Timestamp__439341042;
+    customerId : CustomerId__771418562;
+    customerName : Text;
+    date : Text;
+    id : SaleId__652775874;
+    invoiceNo : Text
+  };
+type Timestamp__301639476 = Int;
+type Timestamp__439341042 = Timestamp__301639476;
+type Timestamp__839643229 = Timestamp__301639476;
+type Timestamp__980057786 = Timestamp__301639476;
+actor {
+  stable customers :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Customer__192853522]];
+      var elementIndex : Nat__490723111
+    };
+  stable receipts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Receipt__761090025]];
+      var elementIndex : Nat__490723111
+    };
+  stable sales :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Sale__289909216]];
+      var elementIndex : Nat__490723111
+    };
+  stable state :
+    {
+      var nextCustomerId : Nat;
+      var nextReceiptId : Nat;
+      var nextSaleId : Nat;
+      var seeded : Bool
+    }
+};

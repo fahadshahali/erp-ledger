@@ -1,0 +1,139 @@
+type UpdateSaleRequest = 
+ record {
+   amount: nat;
+   customerId: CustomerId;
+   customerName: text;
+   date: text;
+   id: SaleId;
+ };
+type UpdateReceiptRequest = 
+ record {
+   amount: nat;
+   customerId: CustomerId;
+   customerName: text;
+   date: text;
+   id: ReceiptId;
+   paymentMode: text;
+ };
+type UpdateCustomerRequest = 
+ record {
+   address: text;
+   companyName: text;
+   customerName: text;
+   gstNumber: text;
+   id: CustomerId;
+   mobile: text;
+   openingBalance: nat;
+ };
+type Timestamp = int;
+type SaleId = text;
+type Sale = 
+ record {
+   amount: nat;
+   createdAt: Timestamp;
+   customerId: CustomerId;
+   customerName: text;
+   date: text;
+   id: SaleId;
+   invoiceNo: text;
+ };
+type ReceiptId = text;
+type Receipt = 
+ record {
+   amount: nat;
+   createdAt: Timestamp;
+   customerId: CustomerId;
+   customerName: text;
+   date: text;
+   id: ReceiptId;
+   paymentMode: text;
+   receiptNo: text;
+ };
+type MonthlyLedgerEntry = 
+ record {
+   closingBalance: int;
+   month: text;
+   openingBalance: int;
+   receipts: nat;
+   sales: nat;
+ };
+type DashboardStats = 
+ record {
+   monthlyCollection: nat;
+   pendingPayments: nat;
+   totalCustomers: nat;
+   totalOutstanding: int;
+   totalReceipts: nat;
+   totalSales: nat;
+ };
+type CustomerSummary = 
+ record {
+   closingBalance: int;
+   companyName: text;
+   customerCode: text;
+   customerName: text;
+   gstNumber: text;
+   mobile: text;
+   openingBalance: nat;
+   totalReceipts: nat;
+   totalSale: nat;
+ };
+type CustomerLedger = 
+ record {
+   customer: Customer;
+   entries: vec MonthlyLedgerEntry;
+ };
+type CustomerId = text;
+type Customer = 
+ record {
+   address: text;
+   companyName: text;
+   createdAt: Timestamp;
+   customerCode: text;
+   customerName: text;
+   gstNumber: text;
+   id: CustomerId;
+   mobile: text;
+   openingBalance: nat;
+ };
+type AddSaleRequest = 
+ record {
+   amount: nat;
+   customerId: CustomerId;
+   customerName: text;
+   date: text;
+ };
+type AddReceiptRequest = 
+ record {
+   amount: nat;
+   customerId: CustomerId;
+   customerName: text;
+   date: text;
+   paymentMode: text;
+ };
+type AddCustomerRequest = 
+ record {
+   address: text;
+   companyName: text;
+   customerName: text;
+   gstNumber: text;
+   mobile: text;
+   openingBalance: nat;
+ };
+service : {
+  addCustomer: (req: AddCustomerRequest) -> (Customer);
+  addReceipt: (req: AddReceiptRequest) -> (Receipt);
+  addSale: (req: AddSaleRequest) -> (Sale);
+  getAllCustomers: () -> (vec Customer) query;
+  getAllReceipts: () -> (vec Receipt) query;
+  getAllSales: () -> (vec Sale) query;
+  getCustomerById: (id: text) -> (opt Customer) query;
+  getCustomerLedger: (customerId: text) -> (opt CustomerLedger) query;
+  getCustomerSummaries: () -> (vec CustomerSummary) query;
+  getDashboardStats: () -> (DashboardStats) query;
+  getReceiptsByCustomer: (customerId: text) -> (vec Receipt) query;
+  getSalesByCustomer: (customerId: text) -> (vec Sale) query;
+  updateCustomer: (req: UpdateCustomerRequest) -> (opt Customer);
+  updateReceipt: (req: UpdateReceiptRequest) -> (opt Receipt);
+  updateSale: (req: UpdateSaleRequest) -> (opt Sale);
+}
